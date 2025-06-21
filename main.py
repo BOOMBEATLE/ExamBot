@@ -59,7 +59,6 @@ async def get_user():
                 tester.all_of_users[message.from_user.id]["user"] = message.text
                 await bot.send_message(message.from_user.id, "Отлично, перейдём к тестированию!")
                 await asyncio.sleep(3)
-                tester.all_of_users[message.from_user.id]["stat"] = "in_test"
                 await tester.start_test(message)
             else:
                 await bot.send_message(message.from_user.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",

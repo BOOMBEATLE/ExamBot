@@ -16,6 +16,7 @@ async def start_test(message):
     try:
         if await is_user_subscribed(message.from_user.id, channel):
             random_ticket = random.randint(1, 4)
+            all_of_users[message.from_user.id]["stat"] = "in_test"
             for i in range(5):
                 all_of_users[message.from_user.id]["contin_for"] = False
                 await filework.save_stats(all_of_users)
@@ -64,10 +65,10 @@ async def start_test(message):
                 await send_info(all_of_users[message.from_user.id]["true"], all_of_users[message.from_user.id]["try"], all_of_users[message.from_user.id]["user"])
                 all_of_users[message.from_user.id]["true"] = 0
                 await filework.save_stats(all_of_users)
+            all_of_users[message.from_user.id]["stat"] = "None"
+            await filework.save_stats(all_of_users)
         else: await bot.send_message(message.from_user.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",
                             parse_mode="HTML")
-        all_of_users[message.from_user.id]["stat"] = "None"
-        await filework.save_stats(all_of_users)
     except telebot.apihelper.ApiTelegramException as e:
         print("ошибка")
 
