@@ -16,7 +16,6 @@ async def start_test(message):
     try:
         if await is_user_subscribed(message.from_user.id, channel):
             random_ticket = random.randint(1, 4)
-            all_of_users[message.from_user.id]["stat"] = "in_test"
             for i in range(5):
                 all_of_users[message.from_user.id]["contin_for"] = False
                 await filework.save_stats(all_of_users)

@@ -1,11 +1,11 @@
 {
     "6548820524": {
-        "user": "e,e,,e,e",
-        "stat": "None",
+        "user": "dssada",
+        "stat": "in_test",
         "answer": 1,
         "true": 0,
         "try": 6,
-        "contin_for": true
+        "contin_for": false
     },
     "1566550596": {
         "user": "Только",
