@@ -17,7 +17,7 @@ async def start_process(chat_id):
         if chat_id not in tester.all_of_users:
             tester.all_of_users.setdefault(chat_id, {"user": "None", "stat": "None", "answer": 0, "true": 0, "try": 0, "contin_for": False})
             await filework.save_stats(tester.all_of_users)
-        if  tester.all_of_users[chat_id]["stat"] == "in_test":
+        if  tester.users_in_test[chat_id]:
             await bot.send_message(chat_id, "Вы уже начали тест. Пожалуйста, завершите его перед новым запуском!")
             return
         if await is_user_subscribed(chat_id, channel):
@@ -62,7 +62,7 @@ async def get_user():
                 await filework.save_stats(tester.all_of_users)
                 await bot.send_message(message.from_user.id, "Отлично, перейдём к тестированию!")
                 await asyncio.sleep(3)
-                tester.all_of_users[message.from_user.id]["stat"] = "in_test"
+                tester.users_in_test[message.from_user.id] = True
                 await tester.start_test(message)
             else:
                 await bot.send_message(message.from_user.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",

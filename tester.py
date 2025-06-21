@@ -7,6 +7,7 @@ import telebot
 import asyncio
 import filework
 
+users_in_test = {}
 all_of_users ={}
 image_url = ("https://images.steamusercontent.com/ugc/18301734"
              "91796467886/41C5DB2661FCEB9884AC5FE6E1B4CCF25A0CD"
@@ -64,8 +65,6 @@ async def start_test(message):
                 await send_info(all_of_users[message.from_user.id]["true"], all_of_users[message.from_user.id]["try"], all_of_users[message.from_user.id]["user"])
                 all_of_users[message.from_user.id]["true"] = 0
                 await filework.save_stats(all_of_users)
-            all_of_users[message.from_user.id]["stat"] = "None"
-            await filework.save_stats(all_of_users)
         else: await bot.send_message(message.from_user.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",
                             parse_mode="HTML")
     except telebot.apihelper.ApiTelegramException as e:
