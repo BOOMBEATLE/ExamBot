@@ -20,6 +20,10 @@ Thumbs.db
 # Log files
 *.log
 
+.venv/pyvenv.cfg
+
 # Temporary files
 *~
 *.swp
+
+databasexam.json
