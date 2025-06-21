@@ -24,7 +24,7 @@ async def start_test(message):
                 await bot.send_message(message.from_user.id, f"<b>{allvarsandquest.vars[random_ticket - 1][f'var{random_ticket}'][f'вопрос{i + 1}']['текст']}</b>", parse_mode="HTML")
                 await asyncio.sleep(1)
                 sent_message = await bot.send_message(message.from_user.id,"<i>Пожалуйста прочитайте вопрос, после этого вам будут даны варианты ответа.</i>", parse_mode= "HTML")
-                await asyncio.sleep(4)
+                await asyncio.sleep(5)
                 await bot.delete_message(message.from_user.id, sent_message.message_id)
                 await asyncio.sleep(1)
 
