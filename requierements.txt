@@ -1,0 +1,7 @@
+telebot
+asyncio
+aiohttp
+aiofiles
+json
+random
+requests
