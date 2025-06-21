@@ -57,6 +57,8 @@ async def get_user():
         try:
             if await is_user_subscribed(message.from_user.id, channel):
                 tester.all_of_users[message.from_user.id]["user"] = message.text
+                tester.all_of_users[message.from_user.id]["stat"] = "None"
+                await filework.save_stats(tester.all_of_users)
                 await bot.send_message(message.from_user.id, "Отлично, перейдём к тестированию!")
                 await asyncio.sleep(3)
                 await tester.start_test(message)
