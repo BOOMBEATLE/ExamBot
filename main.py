@@ -42,7 +42,7 @@ async def callback_handler(call):
             message_id = int(call.message.message_id)
             await bot.edit_message_reply_markup(chat_id=chat_id, message_id=message_id, reply_markup=None)
         else:
-            await bot.send_message(message.chat.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",
+            await bot.send_message(call.from_user.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",
                             parse_mode="HTML")
     except telebot.apihelper.ApiTelegramException as e:
         print("ошибка")

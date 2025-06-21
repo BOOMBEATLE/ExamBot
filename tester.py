@@ -20,15 +20,17 @@ async def start_test(message):
                 all_of_users[message.from_user.id]["contin_for"] = False
                 await filework.save_stats(all_of_users)
                 answers = "Варианты ответа:\n"
-                await bot.send_message(message.from_user.id, f"<b>{allvarsandquest.vars[random_ticket - 1][f"var{random_ticket}"][f"вопрос{i + 1}"]["текст"]}</b>", parse_mode="HTML")
+
+                await bot.send_message(message.from_user.id, f"<b>{allvarsandquest.vars[random_ticket - 1][f'var{random_ticket}'][f'вопрос{i + 1}']['текст']}</b>", parse_mode="HTML")
                 await asyncio.sleep(1)
                 sent_message = await bot.send_message(message.from_user.id,"<i>Пожалуйста прочитайте вопрос, после этого вам будут даны варианты ответа.</i>", parse_mode= "HTML")
                 await asyncio.sleep(4)
                 await bot.delete_message(message.from_user.id, sent_message.message_id)
                 await asyncio.sleep(1)
+
                 for j in range(len(
                         allvarsandquest.vars[random_ticket - 1][f"var{random_ticket}"][f"вопрос{i + 1}"]["ответы"])):
-                    answers += f"{j+1}. {allvarsandquest.vars[random_ticket - 1][f"var{random_ticket}"][f"вопрос{i + 1}"]["ответы"][j].capitalize()}.\n"
+                    answers += f"{j+1}. {allvarsandquest.vars[random_ticket - 1][f'var{random_ticket}'][f'вопрос{i + 1}']['ответы'][j].capitalize()}.\n"
 
                 await bot.send_message(message.from_user.id, answers, reply_markup= await keyboards.get_ans_keyboard(len(
                     allvarsandquest.vars[random_ticket - 1][f"var{random_ticket}"][f"вопрос{i + 1}"]["ответы"])))
@@ -67,8 +69,8 @@ async def start_test(message):
     except telebot.apihelper.ApiTelegramException as e:
         print("ошибка")
 
-async def send_info(right_ans,tries, id):
-    await bot.send_message(owners[0], f"Кто: {id}\nРезультат: {right_ans}/5\nПопытка: {tries}")
+async def send_info(right_ans,tries, idshka):
+    await bot.send_message(owners[0], f"Кто: {idshka}\nРезультат: {right_ans}/5\nПопытка: {tries}")
 
 
 
