@@ -66,6 +66,8 @@ async def start_test(message):
                 await filework.save_stats(all_of_users)
         else: await bot.send_message(message.from_user.id, f"Подпишись на <a href=\"https://t.me/{channel[1:]}\">канал</a>!",
                             parse_mode="HTML")
+        all_of_users[message.from_user.id]["stat"] = "None"
+        await filework.save_stats(all_of_users)
     except telebot.apihelper.ApiTelegramException as e:
         print("ошибка")
 
