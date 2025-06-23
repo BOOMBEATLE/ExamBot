@@ -46,7 +46,7 @@ async def start_test(message):
                     await bot.send_message(message.from_user.id, "Верно!")
                 else:
                     await bot.send_message(message.from_user.id, "❌")
-                    await bot.send_message(message.from_user.id, "Не верно!")
+                    await bot.send_message(message.from_user.id, "Неверно!")
                 await asyncio.sleep(4)
 
             if (all_of_users[message.from_user.id]["true"] < 4):
